@@ -7,7 +7,11 @@ def create_app():
 
     @app.route("/api/gmt/<gmt>")
     def get_gmt(gmt):
-        time = datetime.now( timezone("Etc/GMT{}".format(gmt)) )
+        time = datetime.now( timezone("Etc/GMT{}".format(
+                (gmt.replace("-", "+"), gmt.replace("+", "-"))[gmt.startswith("+")]
+                )
+            )
+        )
 
         return time.strftime("%d/%m/%Y %H:%M:%S")
     
