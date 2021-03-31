@@ -9,7 +9,7 @@ def create_app():
 
     @app.route("/api/gmt/<gmt>")
     def get_gmt(gmt):
-        tz = "Etc/-GMT{}".format(
+        tz = "Etc/GMT{}".format(
             (gmt.replace("-", "+"), gmt.replace("+", "-"))[gmt.startswith("+")]
         )
 
